@@ -12,10 +12,10 @@ jobs:
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t mariea/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true mariea/react-test npm test
-      - run: docker build -t mariea/multi-client /client
-      - run: docker build -t mariea/multi-nginx /nginx
-      - run: docker build -t mariea/multi-server /server
-      - run: docker build -t mariea/muti-worker /worker
+      - run: docker build -t mariea/multi-client ./client
+      - run: docker build -t mariea/multi-nginx ./nginx
+      - run: docker build -t mariea/multi-server ./server
+      - run: docker build -t mariea/muti-worker ./worker
       - run: docker push mariea/multi-client
       - run: docker push mariea/multi-nginx
       - run: docker push mariea/multi-server
